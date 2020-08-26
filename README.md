@@ -31,16 +31,17 @@
 
 
 **Milestones**:
-1.- Use a K8s environment with Squid Proxy running on pods doing reverse proxy to the websites defined as targets, one pod per website (basically, without the ICAP server)and validate there is not impact for the 7 targeted sites.
-2.- Create reference implementation for Squid Proxy 
-3.- Use a K8s environment with Proxy EG running on pods doing reverse proxy to the websites defined as targets, one pod per website (basically, without the ICAP server)and validate there is not impact for the 7 targeted sites.
-4.- Create reference implementation for Proxy EG.
-5.- Use a K8s environment with F5 running on pods doing reverse proxy to the websites defined as targets, one pod per website (basically, without the ICAP server)and validate there is not impact for the 7 targeted sites.
-6.- Create reference implementation for F5.
-7.- Use proxy's ICAP to send files to externally hosted Glasswall ICAP Server.
-8.- Validation of the reserve proxies implementation and results.
-9.- Creation of an CI and CD pipeline to build, configure and deploy each solution.
-10.- Implement logging solutions to visualize what is going on the proxy
+1. Use a K8s environment with Squid Proxy running on pods doing reverse proxy to the websites defined as targets, one pod per website (basically, without the ICAP server)and validate there is not impact for the 7 targeted sites.
+2. Create reference implementation for Squid Proxy 
+3. Use a K8s environment with Proxy EG running on pods doing reverse proxy to the websites defined as targets, one pod per website (basically, without the ICAP server)and validate there is not impact for the 7 targeted sites.
+4. Create reference implementation for Proxy EG.
+5. Use a K8s environment with F5 running on pods doing reverse proxy to the websites defined as targets, one pod per website (basically, without the ICAP server)and validate there is not impact for the 7 targeted sites.
+6. Create reference implementation for F5.
+7. Use proxy's ICAP to send files to externally hosted Glasswall ICAP Server.
+8. Validation of the reserve proxies implementation and results.
+9. Creation of an CI and CD pipeline to build, configure and deploy each solution.
+10. Implement logging solutions to visualize what is going on the proxy
 
 **Needed environments**:
+
 - K8s environment
