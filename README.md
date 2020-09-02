@@ -27,7 +27,8 @@
 - creation of an CI and CD pipeline to build, configure and deploy each solution 
 - Implement logging solutions to visualize what is going on the proxy
 
-**Resources**:
+**Architecture Diagram**:
+![image](https://user-images.githubusercontent.com/5932628/91970515-0cebcf00-ed18-11ea-9f6d-6bf949e1b426.png)
 
 
 **Milestones**:
