@@ -9,7 +9,7 @@ countryName = US
 stateOrProvinceName = GA
 localityName = Atlanta
 organizationalUnitName	= Junk
-commonName = glasswallsolutions.com
+commonName = file.io
 
 [v3_req]
 # Extensions to add to a certificate request
@@ -26,6 +26,4 @@ basicConstraints = critical,CA:true
 copy_extensions = copy
 
 [alt_names]
-DNS.1 = file-drop.co.uk
-DNS.2 = *.execute-api.us-west-2.amazonaws.com
-DNS.3 = *.glasswallsolutions.com
+DNS.1 = www.file.io
