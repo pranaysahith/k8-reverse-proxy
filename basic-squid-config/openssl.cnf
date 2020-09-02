@@ -1,0 +1,31 @@
+[req]
+distinguished_name = distinguished_name
+prompt = no
+req_extensions = v3_req
+x509_extensions = v3_ca
+
+[distinguished_name]
+countryName = US
+stateOrProvinceName = GA
+localityName = Atlanta
+organizationalUnitName	= Junk
+commonName = glasswallsolutions.com
+
+[v3_req]
+# Extensions to add to a certificate request
+basicConstraints = CA:TRUE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[v3_ca]
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer
+basicConstraints = critical,CA:true
+
+[CA]
+copy_extensions = copy
+
+[alt_names]
+DNS.1 = file-drop.co.uk
+DNS.2 = *.execute-api.us-west-2.amazonaws.com
+DNS.3 = *.glasswallsolutions.com
