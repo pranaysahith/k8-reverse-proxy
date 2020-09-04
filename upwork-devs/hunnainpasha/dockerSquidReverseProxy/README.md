@@ -1,4 +1,4 @@
-### Project #4) Glasswall Reverse Proxy use-cases - # k8-reverse-proxy
+### Glasswall Reverse Proxy use-cases - # k8-reverse-proxy Docker
 
 **Configs**: Basic Config
 
