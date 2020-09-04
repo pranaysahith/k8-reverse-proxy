@@ -1,6 +1,6 @@
 ### Squid as a Reverse Proxy
 
-**Objective**: Build
+**Build**: 
 
 docker build . -t squid-reverseproxy/external-config
 
