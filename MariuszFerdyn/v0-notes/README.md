@@ -1,4 +1,4 @@
-###Install Webmin
+### Install Webmin
 apt-get update
 apt-get install mc
 mcedit /etc/apt/sources.list
@@ -16,6 +16,6 @@ apt-get install install iproute2
 ip addr 
 
 
-###Connect to Container
+### Connect to Container
 docker ps
 docker exec -it  container_is /bin/bash
