@@ -33,6 +33,11 @@ kubectl get service  (get port number, ip, ip can be diffrent depends how k8s is
 
 See Run section to test it from browser.
 
+**Clean all k8s - delete all deployemns not only current**:
+
+kubectl delete all deployments
+
+
 **Info**:
 
 Show config: cat squid.conf | grep -v "^#" | grep -v -e '^$'
