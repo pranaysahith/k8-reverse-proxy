@@ -29,7 +29,7 @@ kubectl run squid-reverseproxy01 --image=username/squid-reverseproxy:v01 --port=
 kubectl get pod
 kubectl describe pod
 kubectl expose deploy squid-reverseproxy01 --port=443 --type=NodePort
-kubectl get service
+kubectl get service  (get port number, ip, ip can be diffrent depends how k8s is exposed to the internet)
 
 See Run section to test it from browser.
 
