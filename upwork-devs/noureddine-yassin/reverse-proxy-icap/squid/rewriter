@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys, re
-rootdomain = r'gw-proxy.com'
+rootdomain = r'glasswall-icap.com'
 pattern = re.compile(r'(http(s)?:\/\/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]).' + rootdomain + r'\/')
 
 while True:
@@ -16,5 +16,5 @@ while True:
         newurl='https://'+newurl[7:]
     newline = ' '.join([newurl] + origline.split()[1:])
     with open('/var/log/squid/urlrewrite.log','a') as fp:
-        fp.write('> '+origline+'\n'+'< '+newline+'\n')
+        fp.write('> '+origline+'\n'+'< '+newurl+'\n')
     print(newurl)
