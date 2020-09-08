@@ -44,3 +44,4 @@ The different components of JMeter are called Elements. Each Element is designed
 
 ●   **Assertion** – in JMeter is used to validate the response of the request, that you have sent to the server. Assertion is a process where you verify the expected result with the actual result of the request at run time. If you need to apply assertion on a particular Sampler, then add it as a child of that Sampler.
 
+![Assertion](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/Assertion.png)
