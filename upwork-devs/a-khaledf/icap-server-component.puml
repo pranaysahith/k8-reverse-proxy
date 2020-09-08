@@ -1,0 +1,27 @@
+@startuml
+!include <c4/C4_Component.puml>
+
+title Glass Wall Reverse Proxy ICAP Server Component Overview
+
+Person(client, Client, "A client for glasswall")
+
+System_Boundary(c1, "CDR") {
+    Container(proxy, Proxy, "Squid Proxy", "proxy the Files through ICAP")
+    Container_Boundary(c2, "ICAP Server") {
+        Component(c_icap, "C ICAP", "ICap", "icap server implementation")
+        Component(rebuild, Rebuild, "Rebuild SDK")
+    }
+}
+
+System(website, "glasswall.com", "glass wall website") 
+
+Rel_Down(client, proxy, "download / upload Files")
+Rel_Back(proxy, website, "responses")
+Rel(proxy, website, "requests")
+
+Rel(proxy, c_icap, "files", "icap")
+Rel_Back(proxy, c_icap, "sanitized files", "icap")
+Rel_Left(c_icap, rebuild, "files")
+Rel_Right(rebuild, c_icap, "sanitized files")
+
+@enduml
