@@ -8,3 +8,6 @@ sudo dpkg -i ../docker/squid-deb-packages/*.deb
 sudo apt install -f -y
 sudo mv nginx/conf.d/* /etc/nginx/conf.d/
 sudo mv nginx/conf/* /etc/nginx/conf/
+sudo mv squid/* /etc/squid/conf/
+sudo touch /var/log/squid/urlrewrite.log
+sudo chown proxy:proxy /var/log/squid/urlrewrite.log
