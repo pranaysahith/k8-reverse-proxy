@@ -17,7 +17,7 @@ docker run --env PROXY_IN=Proxy_FQDN --env PROXY_WEB=Orgin_FQDN -p 443:443 -p 80
 e.g.: docker run --env PROXY_IN=squidproxy.northeurope.cloudapp.azure.com --env PROXY_WEB=glasswallsolutions.com -p 443:443 -p 80:80 -it squid-reverseproxy/variable-config
 
 Open PROXY_IN webpage
-e.g.: open https://glasswallsolutions.com/ (accept self-signed cert)
+e.g.: open https://squidproxy.northeurope.cloudapp.azure.com/ (accept self-signed cert, maybe host file must be edited)
 
 Destination address must be https, not http. 
 
