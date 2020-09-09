@@ -1,12 +1,12 @@
 ## Usage:
 
-1. tweak subfilter.sh to replace URLs in backend response in the following format
+1. Tweak subfilter.sh to replace URLs in backend response in the following format
 
 ```
 SUBFILTER=( PATTERN_TO_MATCH1,PATTERN_REPLACE1 PATTERN_TO_MATCH2,PATTERN_REPLACE2 )
 ```
 
-2. tweak gwproxy.env 
+2. Tweak gwproxy.env 
 
 ```
 # Allowed requested domains, comma separated
@@ -17,6 +17,8 @@ ICAP_URL=icap://20.54.179.61:1344/gw_rebuild
 ROOT_DOMAIN=glasswall-icap.com
 ```
 
-3. install [docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) and [docker-compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems) : 
+3. Install [docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) and [docker-compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems) : 
 
-4. execute the following `docker-compose up -d`
+4. Clone the repo and change working directory into this project folder 
+
+5. Execute the following `docker-compose up -d`
