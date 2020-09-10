@@ -13,8 +13,7 @@ EOF
 
 for i in "${SUBFILTER[@]}" ;  do
     IFS="," ; set -- $i
-    echo 1 $1 2 $2
-    echo "proxy_redirect ~$1 $2 ;"  >> /etc/nginx/conf/proxy.conf
+    echo "proxy_redirect ~(.*)$1(.*) \$1$2\$2 ;"  >> /etc/nginx/conf/proxy.conf
 done
 
 cat > /etc/nginx/conf.d/default.conf <<EOF
