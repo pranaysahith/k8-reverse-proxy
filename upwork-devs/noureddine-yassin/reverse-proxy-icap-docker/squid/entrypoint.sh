@@ -1,4 +1,5 @@
 #!/bin/bash
+>/etc/squid/conf.d/allowed_backends.conf
 for domain in $( echo $ALLOWED_DOMAINS | tr ',' ' ' ) ; do
     echo "acl allowed dstdomain $domain" >> /etc/squid/conf.d/allowed_backends.conf
 done
