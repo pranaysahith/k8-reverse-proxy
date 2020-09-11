@@ -8,5 +8,5 @@ COPY squid.conf /etc/squid
 COPY rewriter /etc/squid
 COPY squid.pem /etc/squid
 COPY entrypoint.sh /
-RUN touch /var/log/squid/urlrewrite.log ; chown proxy:proxy /var/log/squid/ /etc/squid -R
+RUN touch /var/log/squid/urlrewrite.log ; chown proxy:proxy /var/log/squid/ /etc/squid -R ; touch /first-run
 ENTRYPOINT ["/entrypoint.sh"]
