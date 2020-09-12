@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  squid:
+    build: .
+    image: squid-reverse
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./logs:/var/log/squid"
+      - "./config/conf.d:/etc/squid/conf.d:ro"
+    # - "./config/squid.conf:/etc/squid/squid.conf:ro"  # Uncomment to use your own squid.conf
+    network_mode: host
+    restart: always
+
