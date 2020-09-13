@@ -1,3 +1,26 @@
+### RELEASE 1 reverse-proxy-icap-docker
+Source: https://github.com/filetrust/k8-reverse-proxy/tree/e4a5a5238a565fc82395d56d2388a80ce30375f8
+
+Release 1 includes the completed/tested pieces of the Reverse Proxy project as a "reverse-proxy-icap-docker" to run inside a standard Ubuntu 18.04 server OVA image. The completed pieces of this project so far are:
+
+- Squid based reverse Proxy for a specific website.
+- Two Way URL rewrite/ with the help of NGINX in front of Squid.
+- SSL termination.
+- ICAP integration
+
+**Default configuration includes proxy for**
+- assets.publishing.service.gov.uk.glasswall-icap.com
+- gov.uk.glasswall-icap.com
+- www.gov.uk.glasswall-icap.com
+- ICAP_URL=icap://20.54.208.58:1344/gw_rebuild
+
+
+
+**Credits**
+
+reverse-proxy-icap-docker by NourEddineX and yassin
+
+
 ## Prepare Envioriment:
 
 ``` bash
