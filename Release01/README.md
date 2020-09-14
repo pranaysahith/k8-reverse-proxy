@@ -66,14 +66,14 @@ ROOT_DOMAIN=glasswall-icap.com
 sudo docker-compose up -d
 ```
 
-4. Verify that every container is Up
+4. Verify that all containers are up
 ```bash
 sudo docker-compose ps
 ```
 
 **In case you experience any issues, try:**
 
-- make sure docker is running
+- Check if docker service is active
 ``` bash
 sudo systemctl status docker
 ```
