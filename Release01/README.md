@@ -16,12 +16,7 @@ Release 1 includes the completed/tested pieces of the Reverse Proxy project as a
 
 
 
-**Credits**
-
-reverse-proxy-icap-docker by NourEddineX and yassin
-
-
-## Prepare Envioriment:
+## Prepare Environment:
 
 ``` bash
 sudo apt-get update && sudo apt-get install curl git -y
