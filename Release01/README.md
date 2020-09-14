@@ -40,8 +40,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```bash
 git clone https://github.com/filetrust/k8-reverse-proxy
 cd Release01
-chmod 755 nginx/entrypoint.sh
-chmod 755 squid/entrypoint.sh
 ```
 
 1. Tweak subfilter.sh to replace URLs in backend response in the following format
@@ -68,11 +66,10 @@ ROOT_DOMAIN=glasswall-icap.com
 sudo docker-compose up -d
 ```
 
-3. Verify that every container is Up
+4. Verify that every container is Up
 ```bash
 sudo docker-compose ps
 ```
-
 
 **In case you experience any issues, try:**
 
@@ -85,8 +82,8 @@ sudo systemctl status docker
 ``` bash
 sudo docker-compose ps
 ```
-- If squid or nginx is not started correctly
+
+- If squid or nginx is not started correctly, or any of the configuration parameters in gwproxy.env or subfilter.sh has been modified
 ``` bash
-sudo docker-compose up -d --force-recreate squid
-sudo docker-compose up -d --force-recreate nginx
+sudo docker-compose up -d --force-recreate
 ```
