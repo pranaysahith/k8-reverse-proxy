@@ -58,6 +58,10 @@ If you need to apply assertion on a particular Sampler, then add it as a child o
 
 ![image-20200908172008066](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/threadgroup.png)
 
+![threadgroup1](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/threadgroup1.png?raw=true)
+
+
+
 The command to run the Test Plan in the command prompt is as follows :
 
 ●    **jmeter -n -t testscript.jmx -l resultfile.csv**
@@ -75,8 +79,6 @@ Where,
 Now once you have run the test from the CLI, it will store the result in loadtest.csv file.
 
 ![image-20200908172136124](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/Untitled.png)
-
-![threadgroup1](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/threadgroup1.png?raw=true)
 
 ### Report Generation on Dashboard
 
