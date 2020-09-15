@@ -21,4 +21,10 @@ ROOT_DOMAIN=glasswall-icap.com
 
 4. Clone the repo and change working directory into this project folder 
 
-5. Execute the following `docker-compose up -d`
+5. Build and spawn the docker app by executing quickstart.sh script
+
+```
+./quickstart.sh
+```
+
+You can stop/start the docker containers using ```docker-compose stop``` and ```docker-compose start```, in case any change in configuration files, you will have to execute ```docker-compose up -d --force-recreate``` to deploy configuration changes

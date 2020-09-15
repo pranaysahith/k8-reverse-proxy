@@ -1,0 +1,3 @@
+[submodule "upwork-devs/noureddine-yassin/reverse-proxy-icap-docker/c-icap"]
+	path = upwork-devs/noureddine-yassin/reverse-proxy-icap-docker/c-icap
+	url = https://github.com/filetrust/c-icap
