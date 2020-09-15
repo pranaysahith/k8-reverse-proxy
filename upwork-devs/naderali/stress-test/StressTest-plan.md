@@ -44,15 +44,17 @@ If you need to apply assertion on a particular Sampler, then add it as a child o
 
 ### Load testing using JMeter with the command prompt.   
 
-**Step 1** – First you have to create a test plan in the user interface of JMeter.
+**Step 1** – First open the user interface of JMeter by running jmeter.bat file 
+
+**Step 2** – Then you have to create a test plan.
 
 ![image-20200908171843121](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/testplan.png)
 
-**Step 2** – Next step is to add thread groups and specify the number of threads or users and loop count.
+**Step 3** – Next step is to add thread groups and specify the number of threads or users and loop count.
 
 ![image-20200908171924593](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/add-thread.png)
 
-**Step 3** – Once the thread group is created, next step is to add the HTTP Request and specify the server name and path. Now save your Test Plan in any folder.
+**Step 4** – Once the thread group is created, next step is to add the HTTP Request and specify the server name and path (gov.uk.glasswall-icap.com) in our case. Now save your Test Plan in any folder.
 
 ![image-20200908172008066](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/threadgroup.png)
 
@@ -70,11 +72,11 @@ Where,
 
  
 
-Now once you have run the test from the command prompt, it will store the result in loadtest.csv file.
+Now once you have run the test from the CLI, it will store the result in loadtest.csv file.
 
 ![image-20200908172136124](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/Untitled.png)
 
-
+![threadgroup1](https://github.com/naderaly/k8-reverse-proxy/blob/master/upwork-devs/naderali/stress-test/attachments/threadgroup1.png?raw=true)
 
 ### Report Generation on Dashboard
 
