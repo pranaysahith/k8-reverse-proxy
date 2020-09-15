@@ -87,3 +87,14 @@ sudo docker-compose ps
 ``` bash
 sudo docker-compose up -d --force-recreate
 ```
+
+- You have to assign all proxied domains to the docker host ip address by adding them to hosts file ( C:\Windows\System32\drivers\etc\hosts for Windows, /etc/hosts for linux )
+for example: 
+
+```
+192.168.0.10 gov.uk.glasswall-icap.com www.gov.uk.glasswall-icap.com assets.publishing.service.gov.uk.glasswall-icap.com
+```
+where `192.168.0.10` is an example for the IP address for the docker host (i.e Cloud or local VM)
+
+You can test the stack functionality by downloading [a rich PDF file](https://assets.publishing.service.gov.uk.glasswall-icap.com/government/uploads/system/uploads/attachment_data/file/901225/uk-internal-market-white-paper.pdf) through the proxy and testing it against [file-drop.co.uk](https://file-drop.co.uk)
+You may also want to visit [the proxied main page](https://www.gov.uk.glasswall-icap.com/) and make sure that the page loads correctly and no requests/links is pointing to the original `*.gov.uk` website
