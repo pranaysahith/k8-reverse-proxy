@@ -37,7 +37,8 @@ git submodule update # Update submodules
 wget -O c-icap/Glasswall-Rebuild-SDK-Evaluation/Linux/Library/libglasswall.classic.so https://raw.githubusercontent.com/filetrust/Glasswall-Rebuild-SDK-Evaluation/master/Linux/Library/libglasswall.classic.so # Get latest evaluation build of GW Rebuild engine
 ```
 
-1. If you are deploying the proxy for other websites, tweak subfilter.sh to rewrite URLs in backend response in the following format
+1. If you are deploying the proxy for other websites, tweak `subfilter.sh` to rewrite URLs in backend response in the following format
+   You can modify the file using `nano subfilter.sh`, save and exit using`CTRL+X`, then `Y`
 
 ```bash
 SUBFILTER=( PATTERN_TO_MATCH1,PATTERN_REPLACE1 PATTERN_TO_MATCH2,PATTERN_REPLACE2 )
@@ -51,10 +52,12 @@ SUBFILTER=( .gov.uk,.gov.uk.glasswall-icap.com  .amazonaws.com,.amazonaws.com.gl
 
 This means that any occurence of **.gov.uk** in the response should be replaced with **.gov.uk.glasswall-icap.com** , and **.amazonaws.com** will be replaced with **.amazonaws.com.glasswall-icap.com** .
 
-2. If you are deploying the proxy for other websites, tweak gwproxy.env:
+2. If you are deploying the proxy for other websites, tweak `gwproxy.env`:
    **ALLOWED_DOMAINS** variable to include a comma-separated list of proxied domains, any requests to other domains will be denied.
    
    Set **ROOT_DOMAIN** to match the domain used as suffix for backend domains.
+   
+   You can modify the file using `nano gwproxy.env`, save and exit using`CTRL+X`, then `Y`
 
 ```bash
 # Allowed requested domains, comma-separated
