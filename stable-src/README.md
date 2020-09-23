@@ -2,7 +2,7 @@
 
 [Source](https://github.com/k8-proxy/k8-reverse-proxy)
 
-Release 2 includes the completed/tested pieces of the Reverse Proxy project as a "reverse-proxy-icap-docker" to run inside a standard Ubuntu 18.04 server OVA image. The completed pieces of this project so far are:
+Release 2 includes the completed/tested pieces of the Reverse Proxy project as a "reverse-proxy-icap-docker" to run inside a standard Ubuntu 18.04 (WSL and contianerized environements arent supported) server OVA image. The completed pieces of this project so far are:
 
 - Squid based reverse Proxy for a specific website, with ICAP integration.
 - Two Way URL rewrite/ with the help of NGINX in front of Squid.
@@ -24,7 +24,10 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+sudo usermod -aG docker $( whoami )
 ```
+
+You will have to logout and relogin before deploying the solution
 
 ## Preparing source code
 
@@ -73,13 +76,13 @@ ROOT_DOMAIN=glasswall-icap.com
 3. Execute the following
    
    ```bash
-   sudo docker-compose up -d
+   docker-compose up -d
    ```
 
 4. Verify that all containers are up
    
    ```bash
-   sudo docker-compose ps
+   docker-compose ps
    ```
 
 ## Troubleshooting
@@ -87,19 +90,19 @@ ROOT_DOMAIN=glasswall-icap.com
 - Check if docker service is active
   
   ```bash
-  sudo systemctl status docker
+  systemctl status docker
   ```
 
 - Check if containers are up and running (not Restarting...)
   
   ```bash
-  sudo docker-compose ps
+  docker-compose ps
   ```
 
 - If squid or nginx is not started correctly, or any of the configuration parameters in `gwproxy.env` or `subfilter.sh` has been modified, execute:
   
   ```bash
-  sudo docker-compose up -d --force-recreate
+  docker-compose up -d --force-recreate
   ```
 
 - You have to assign all proxied domains to the docker host ip address by adding them to hosts file ( `C:\Windows\System32\drivers\etc\hosts` on Windows , `/etc/hosts` on Linux )
