@@ -1,5 +1,7 @@
 #!/bin/bash
 if [ -f /first-run ] ; then
+	ICAP_URL=$(eval "echo $ICAP_URL")
+	echo "ICAP_URL is $ICAP_URL"
 	>/etc/squid/conf.d/allowed_backends.conf
 	for domain in $( echo $ALLOWED_DOMAINS | tr ',' ' ' ) ; do
 	    echo "acl allowed dstdomain $domain" >> /etc/squid/conf.d/allowed_backends.conf

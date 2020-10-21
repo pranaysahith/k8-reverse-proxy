@@ -1,14 +1,15 @@
 #!/bin/bash
 set -e
-source /subfilter.sh
+SUBFILTER=( ${SUBFILTER_ENV} )
 mkdir -p /etc/nginx/conf /etc/nginx/conf.d
+echo "SQUID_IP is ${SQUID_IP}"
 cat > /etc/nginx/conf/proxy.conf <<EOF
 
 proxy_set_header Host \$host;
 proxy_set_header Connection \$connection;
 proxy_set_header X-Real-IP \$remote_addr;
 proxy_set_header Accept-Encoding "";
-proxy_pass http://127.0.0.1:8080;
+proxy_pass http://${SQUID_IP}:8080;
 EOF
 
 for i in "${SUBFILTER[@]}" ;  do
