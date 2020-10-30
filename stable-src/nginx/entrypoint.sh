@@ -9,12 +9,17 @@ proxy_set_header Host \$host;
 proxy_set_header Connection \$connection;
 proxy_set_header X-Real-IP \$remote_addr;
 proxy_set_header Accept-Encoding "";
+proxy_buffering on;
+proxy_busy_buffers_size 128k;
+proxy_buffer_size 64k;
+proxy_buffers 8 128k;
 proxy_pass http://${SQUID_IP}:8080;
 EOF
 
 for i in "${SUBFILTER[@]}" ;  do
     IFS="," ; set -- $i
-    echo "proxy_redirect ~(.*)$1(.*) \$1$2\$2 ;"  >> /etc/nginx/conf/proxy.conf
+    echo "proxy_redirect \"~^(https:\/\/)(:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.?)?$1(?:(\/|:))(.*)\" \$1\$2$2\$3\$4;" >> /etc/nginx/conf/proxy.conf
+
 done
 
 cat > /etc/nginx/conf.d/default.conf <<EOF
@@ -24,6 +29,8 @@ server {
     ssl_certificate     /etc/nginx/full.pem;
     ssl_certificate_key /etc/nginx/full.pem;
     ssl_protocols       TLSv1.2 TLSv1.3;
+    client_header_buffer_size 4k;
+    large_client_header_buffers 10 8k;
     server_name  _;
     #charset koi8-r;
     access_log  /var/log/nginx/host.access.log  main;
@@ -39,7 +46,7 @@ done
 cat >> /etc/nginx/conf.d/default.conf <<EOF
       sub_filter_once off;
       sub_filter_types *;
-    }
+	}
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
         root   /usr/share/nginx/html;
