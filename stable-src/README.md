@@ -40,8 +40,8 @@ git submodule update # Update submodules
 wget -O c-icap/Glasswall-Rebuild-SDK-Evaluation/Linux/Library/libglasswall.classic.so https://raw.githubusercontent.com/filetrust/Glasswall-Rebuild-SDK-Evaluation/master/Linux/Library/libglasswall.classic.so # Get latest evaluation build of GW Rebuild engine
 ```
 
-1. If you are deploying the proxy for other websites, tweak `subfilter.sh` to rewrite URLs in backend response in the following format
-   You can modify the file using `nano subfilter.sh`, save and exit using`CTRL+X`, then `Y`
+1. If you are deploying the proxy for other websites, tweak `SUBFILTER_ENV` value in `gwproxy.env` to rewrite URLs in backend response in the following format
+   You can modify the file using `nano gwproxy.env`, save and exit using`CTRL+X`, then `Y`
 
 ```bash
 SUBFILTER=( PATTERN_TO_MATCH1,PATTERN_REPLACE1 PATTERN_TO_MATCH2,PATTERN_REPLACE2 )
@@ -99,7 +99,7 @@ ROOT_DOMAIN=glasswall-icap.com
   docker-compose ps
   ```
 
-- If squid or nginx is not started correctly, or any of the configuration parameters in `gwproxy.env` or `subfilter.sh` has been modified, execute:
+- If squid or nginx is not started correctly, the configuration parameters in `gwproxy.env` has been modified, execute:
   
   ```bash
   docker-compose up -d --force-recreate
