@@ -37,7 +37,7 @@ You will have to logout and relogin before deploying the solution
 git clone --recursive https://github.com/k8-proxy/k8-reverse-proxy
 cd stable-src
 git submodule update # Update submodules
-wget -O c-icap/Glasswall-Rebuild-SDK-Evaluation/Linux/Library/libglasswall.classic.so https://raw.githubusercontent.com/filetrust/Glasswall-Rebuild-SDK-Evaluation/master/Linux/Library/libglasswall.classic.so # Get latest evaluation build of GW Rebuild engine
+wget -O c-icap/Glasswall-Rebuild-SDK-Evaluation/Linux/Library/libglasswall.classic.so https://github.com/filetrust/sdk-rebuild-eval/blob/master/libs/rebuild/linux/libglasswall.classic.so # Get latest evaluation build of GW Rebuild engine
 ```
 
 1. If you are deploying the proxy for other websites, tweak `SUBFILTER_ENV` value in `gwproxy.env` to rewrite URLs in backend response in the following format
