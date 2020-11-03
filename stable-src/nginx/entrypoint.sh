@@ -7,7 +7,7 @@ cat > /etc/nginx/conf/proxy.conf <<EOF
 
 proxy_set_header Host \$host;
 proxy_set_header Connection \$connection;
-proxy_set_header X-Forwarded-Proto \$scheme;
+proxy_set_header X-Forwarded-Proto \$thescheme;
 proxy_set_header X-Real-IP \$remote_addr;
 proxy_set_header Accept-Encoding "";
 proxy_buffering on;
@@ -24,6 +24,13 @@ for i in "${SUBFILTER[@]}" ;  do
 done
 
 cat > /etc/nginx/conf.d/default.conf <<EOF
+map \$http_x_forwarded_proto \$thescheme {
+    default \$scheme;
+    https   https;
+    http    http;
+
+}
+
 server {
     listen   		80;
     listen              443 ssl http2;
