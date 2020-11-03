@@ -10,10 +10,11 @@ while True:
         sys.exit(0)
     if not origline.strip():
         continue
-    url = origline.split()[0]
+    origline_l = list(filter(lambda x:x, origline.split())) # Parsing line
+    url = origline_l[0]
+    scheme = origline_l[-1] # http or https ?
     newurl = pattern.sub(r'\1/',url) # Removing the root domain
-    #if '127.0.0.2/' in origline.split()[1] and newurl.startswith('http://'): # Checking if https should be used
-    newurl='https://'+newurl[7:] # 
+    newurl= scheme + '://'+ '/'.join(newurl.split("/")[2:]) # Replacing scheme
     with open('/var/log/squid/urlrewrite.log','a') as fp:
         fp.write('> '+origline+'\n'+'< '+newurl+'\n')
     print(newurl)

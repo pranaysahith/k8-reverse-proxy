@@ -7,6 +7,7 @@ cat > /etc/nginx/conf/proxy.conf <<EOF
 
 proxy_set_header Host \$host;
 proxy_set_header Connection \$connection;
+proxy_set_header X-Forwarded-Proto \$scheme;
 proxy_set_header X-Real-IP \$remote_addr;
 proxy_set_header Accept-Encoding "";
 proxy_buffering on;
