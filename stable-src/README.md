@@ -16,7 +16,27 @@ Release 2 includes the completed/tested pieces of the Reverse Proxy project as a
 - www.gov.uk.glasswall-icap.com
 - Built-in GW Rebuild ICAP service, can be change by setting **ICAP_URL** in `gwproxy.env`
 
-## Preparing environment:
+## Preparation
+
+We needed to check the website requests to check domains of interest, (domains that should be proxied), which typically are:
+
+- Website main domain and www subdomain (if applicable)
+
+- Domains used in redirects between website pages (example: authentication redirections)
+
+- Domains that hosts files that should be rebuilt against Glasswall rebuild engine
+
+### Finding domains of interest
+
+- Open a browser that included dev tools (i.e : **Mozilla Firefox**)
+
+- Open dev tools and switch to **Network** tab (CTRL+SHIFT+E in **Firefox**)
+
+- Visit target website main page, surf the website and try to download files while watching requested domains 
+
+- Save domains in question to be used in configuration
+
+### Preparing environment:
 
 ```bash
 sudo apt-get update && sudo apt-get install curl git -y
@@ -40,46 +60,35 @@ git submodule update # Update submodules
 wget -O c-icap/Glasswall-Rebuild-SDK-Evaluation/Linux/Library/libglasswall.classic.so https://github.com/filetrust/sdk-rebuild-eval/raw/master/libs/rebuild/linux/libglasswall.classic.so # Get latest evaluation build of GW Rebuild engine
 ```
 
-1. If you are deploying the proxy for other websites, tweak `SUBFILTER_ENV` value in `gwproxy.env` to rewrite URLs in backend response in the following format
-   You can modify the file using `nano gwproxy.env`, save and exit using`CTRL+X`, then `Y`
-
-```bash
-SUBFILTER=( PATTERN_TO_MATCH1,PATTERN_REPLACE1 PATTERN_TO_MATCH2,PATTERN_REPLACE2 )
-```
-
-The default configuration is:
-
-```bash
-SUBFILTER=( .gov.uk,.gov.uk.glasswall-icap.com  .amazonaws.com,.amazonaws.com.glasswall-icap.com )
-```
-
 This means that any occurence of **.gov.uk** in the response should be replaced with **.gov.uk.glasswall-icap.com** , and **.amazonaws.com** will be replaced with **.amazonaws.com.glasswall-icap.com** .
 
-2. If you are deploying the proxy for other websites, tweak `gwproxy.env`:
+1. If you are deploying the proxy for other websites, tweak `gwproxy.env`:
    **ALLOWED_DOMAINS** variable to include a comma-separated list of proxied domains, any requests to other domains will be denied.
    
    Set **ROOT_DOMAIN** to match the domain used as suffix for backend domains.
    
    You can modify the file using `nano gwproxy.env`, save and exit using`CTRL+X`, then `Y`
 
-```bash
-# Allowed requested domains, comma-separated
-ALLOWED_DOMAINS=gov.uk.glasswall-icap.com,www.gov.uk.glasswall-icap.com,assets.publishing.service.gov.uk.glasswall-icap.com
-# ICAP server url
-ICAP_URL=icap://127.0.0.1:1344/gw_rebuild
-# Root domain, the domain appended to the backend website websitedomain
-ROOT_DOMAIN=glasswall-icap.com
-```
+   Use [this configuration file](https://github.com/k8-proxy/k8-reverse-proxy/blob/master/stable-src/gwproxy.env) as example
+
+   - `ROOT_DOMAIN`: Domain used by the proxy (example: www.gov.uk.glasswall-icap.com is proxying www.gov.uk) 
+
+   - `ALLOWED_DOMAINS` : Comma separated domains accepted by the proxy, typically this should be domains of interest with the `ROOT_DOMAIN` value appended
+
+   - `SQUID_IP` IP address of squid proxy, used by nginx, should be only changed on advanced usage of the docker image
+
+   - `SUBFILTER_ENV`: Space separated text substitution rules in response body, foramtted as **match,replace** , used for url rewriting as in **.gov.uk,.gov.uk.glasswall-icap.com**
+
 
 ## Deployment
 
-3. Execute the following
+2. Execute the following
    
    ```bash
    docker-compose up -d
    ```
 
-4. Verify that all containers are up
+3. Verify that all containers are up
    
    ```bash
    docker-compose ps
