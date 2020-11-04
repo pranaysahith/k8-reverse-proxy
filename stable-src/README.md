@@ -16,7 +16,39 @@ Release 2 includes the completed/tested pieces of the Reverse Proxy project as a
 - www.gov.uk.glasswall-icap.com
 - Built-in GW Rebuild ICAP service, can be change by setting **ICAP_URL** in `gwproxy.env`
 
-## Preparing environment:
+## Preparation
+
+We needed to check the website requests to check domains of interest, (domains that should be proxied), which typically are:
+
+- Website main domain and www subdomain (if applicable)
+
+- Domains used in redirects between website pages (example: authentication redirections)
+
+- Domains that hosts files that should be rebuilt against Glasswall rebuild engine
+
+### Finding domains of interest
+
+- Open a browser that included dev tools (i.e : **Mozilla Firefox**)
+
+- Open dev tools and switch to **Network** tab (CTRL+SHIFT+E in **Firefox**)
+
+- Visit target website main page, surf the website and try to download files while watching requested domains 
+
+- Save domains in question to be used in configuration
+
+### Configuration
+
+Use [this configuration file](https://github.com/k8-proxy/k8-reverse-proxy/blob/master/stable-src/gwproxy.env) as example
+
+- `ROOT_DOMAIN`: Domain used by the proxy (example: www.gov.uk.glasswall-icap.com is proxying www.gov.uk) 
+
+- `ALLOWED_DOMAINS` : Comma separated domains accepted by the proxy, typically this should be domains of interest with the `ROOT_DOMAIN` value appended
+
+- `SQUID_IP` IP address of squid proxy, used by nginx, should be only changed on advanced usage of the docker image
+
+- `SUBFILTER_ENV`: Space separated text substitution rules in response body, foramtted as **match,replace** , used for url rewriting as in **.gov.uk,.gov.uk.glasswall-icap.com**
+
+### Preparing environment:
 
 ```bash
 sudo apt-get update && sudo apt-get install curl git -y
