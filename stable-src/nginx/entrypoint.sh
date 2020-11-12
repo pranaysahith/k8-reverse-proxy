@@ -19,7 +19,7 @@ EOF
 
 for i in "${SUBFILTER[@]}" ;  do
     IFS="," ; set -- $i
-    echo "proxy_redirect \"~^(https:\/\/)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.?)?$1(?:(\/|:))(.*)\" \$1\$2$2\$3\$4;" >> /etc/nginx/conf/proxy.conf
+    echo "proxy_redirect \"~^(https?:\/\/)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.?)?$1(?:(\/|:))(.*)\" \$1\$2$2\$3\$4;" >> /etc/nginx/conf/proxy.conf
 
 done
 
