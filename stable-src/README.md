@@ -78,6 +78,8 @@ This means that any occurence of **.gov.uk** in the response should be replaced 
    - `SQUID_IP` IP address of squid proxy, used by nginx, should be only changed on advanced usage of the docker image
 
    - `SUBFILTER_ENV`: Space separated text substitution rules in response body, foramtted as **match,replace** , used for url rewriting as in **.gov.uk,.gov.uk.glasswall-icap.com**
+  
+   - `ICAP_EXCLUDE_MIME_TYPE`: Comma separated mime types in Content-Type header format to exclude from ICAP adaptation, leave empty to disable
 
 
 ## Deployment
